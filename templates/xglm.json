@@ -1,0 +1,6 @@
+{
+    "description": "XGLM",
+    "prompt_input": "<context>: {instruction} <human>: {input} <bot>:",
+    "prompt_no_input": "<context>: {instruction} <bot>:",
+    "response_split": "<bot>:"
+}

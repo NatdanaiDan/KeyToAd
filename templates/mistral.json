@@ -1,0 +1,7 @@
+{
+    "description": "Template used by mistral.",
+    "prompt_input": "<s>[INST] {instruction} {input} [/INST]",
+    "prompt_no_input": "<s>[INST] {instruction} [/INST]",
+    "response_split": "[/INST]",
+    "response_end": "</s>"
+}
