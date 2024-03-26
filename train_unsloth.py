@@ -1,23 +1,16 @@
 from dataclasses import dataclass, field
 from typing import Optional
-from transformers.integrations import is_deepspeed_zero3_enabled
 import torch
-from accelerate import Accelerator
 from datasets import load_dataset
-from peft import LoraConfig
 from tqdm import tqdm
 from transformers import (
-    AutoModelForCausalLM,
-    BitsAndBytesConfig,
     HfArgumentParser,
     TrainingArguments,
-    AutoTokenizer,
     DataCollatorForLanguageModeling,
 )
 from helper.prompter import Prompter
 from trl import SFTTrainer
 import wandb
-import time
 import bitsandbytes as bnb
 import numpy as np
 import evaluate
@@ -37,7 +30,6 @@ class ScriptArguments:
     dataset_name: Optional[str] = field(metadata={"help": "the dataset name"})
     output_dir: Optional[str] = field(metadata={"help": "the output directory"})
     prompter_name: Optional[str] = field(metadata={"help": "the prompter_name"})
-    use_8bit: Optional[bool] = field(default=False, metadata={"help": "the 8bit"})
     fp_16: Optional[bool] = field(default=False, metadata={"help": "the 8bit"})
 
     """
@@ -105,7 +97,7 @@ print(script_args.use_8bit)
 prompter = Prompter(script_args.prompter_name)
 
 ########### wandb init ################
-wandb.login(key="d69f749409d3fc33eef9678cf1257b17c99644e5")
+wandb.login(key="KEY-API")
 run = wandb.init(
     project=f"keytoad_test1",
     job_type="training",
@@ -275,9 +267,7 @@ trainer = SFTTrainer(
     max_seq_length=2048,
     dataset_text_field="text",
     data_collator=DataCollatorForLanguageModeling(tokenizer, mlm=False),
-    tokenizer=tokenizer,
-    # compute_metrics=compute_metrics,
-    # preprocess_logits_for_metrics=preprocess_logits_for_metrics,
+    tokenizer=tokenizer
 )
 
 

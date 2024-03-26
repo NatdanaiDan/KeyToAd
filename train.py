@@ -2,13 +2,10 @@ from dataclasses import dataclass, field
 from typing import Optional
 from transformers.integrations import is_deepspeed_zero3_enabled
 import torch
-from accelerate import Accelerator
 from datasets import load_dataset
 from peft import LoraConfig
-from tqdm import tqdm
 from transformers import (
     AutoModelForCausalLM,
-    BitsAndBytesConfig,
     HfArgumentParser,
     TrainingArguments,
     AutoTokenizer,
@@ -17,10 +14,6 @@ from transformers import (
 from helper.prompter import Prompter
 from trl import SFTTrainer
 import wandb
-import time
-import bitsandbytes as bnb
-import numpy as np
-import evaluate
 import os
 
 
