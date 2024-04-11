@@ -2,6 +2,6 @@
 
 ## Poster
 
-![poster cover](Poster KeyToAd.png)
+![poster cover](PosterKeyToAd.png)
 
-![Full PDF Poster](Poster KeyToAd.pdf)
+![Full PDF Poster](PosterKeyToAd.pdf)
