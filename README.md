@@ -4,4 +4,4 @@
 
 ![poster cover](Poster KeyToAd.png)
 
-[Full PDF Poster](Poster KeyToAd.pdf)
+![Full PDF Poster](Poster KeyToAd.pdf)
